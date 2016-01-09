@@ -10,7 +10,7 @@ If you want to download all repositories, just tun download_repos.sh as follows:
 ```bash download_repos.sh```
 
 
-TO DO:
+**TO DO:**
 
 1. Аз имам някакъв файл за създаване на svg. Криси да го замени с нейния и да го подкара. Аз в main.rb точно подавам json на това дето прави svg, така че би трябвало нейното да тръгне пак така.
 
