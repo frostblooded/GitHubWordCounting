@@ -1,5 +1,4 @@
 require 'json'
-require 'rexml/document'
 require_relative '../svg_writer.rb'
 
 module WordCounter
@@ -27,29 +26,9 @@ module WordCounter
       @word_counts = Hash.new 0
     end
 
-    def to_csv
-      csv = []
-
-      word_counts.each do |word, count|
-        csv << word + ',' + count.to_s
-      end
-
-      csv << "\"marks\"," + marks_count.to_s if marks_count > 0
-      csv.join "\n"
-    end
-
     def to_json
       json_output = { marks: marks_count, words: word_counts }
       JSON.pretty_generate(json_output)
-    end
-
-    def to_xml
-      document = REXML::Document.new
-      word_counts_element = document.add_element 'word-counts'
-      word_counts_element.add_element('marks').add_text "#{marks_count}"
-      word_counts_element.add_element 'words'
-      add_words_to_xml document
-      document
     end
 
     def to_svg
