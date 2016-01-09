@@ -1,10 +1,10 @@
 require 'word_counter/result'
-
+#(?![^"]*").*$
 module WordCounter
   # counts words in text
   class Parser
     def count_marks(string)
-      string.downcase.scan(/[^a-z0-9_\s]/).count
+      string.downcase.scan(/[^[[:word:]]0-9_\s]/).count
     end
 
     def count_words(words)
@@ -24,7 +24,7 @@ module WordCounter
     def split_words(string)
       # the regex on the next line removes commented text, strings, regex
       # and any other symbol that isn't a word
-      removal_regex = /[^a-z0-9_ ]/
+      removal_regex = /(#(?![^"]*"$).*$)|[^[[:word:]]0-9_\s]/
       string.downcase.gsub(removal_regex, ' ').split(' ').reject(&:empty?)
     end
 
