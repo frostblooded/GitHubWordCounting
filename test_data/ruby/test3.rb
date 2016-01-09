@@ -24,6 +24,8 @@ def print_result result, solved
 	p "The result is"
 	p result
 	p "Solved is:"
+	##lla#lasldalsd
+	#asdasd
 	p solved
 end
 
@@ -34,6 +36,12 @@ script_output = ARGV[2]
 include_folder = ARGV[3]
 
 CSV.open("result.csv", "w") do |csv_array|
+
+=begin
+	a[odpjasiodasjdsaopd
+	as[odasodkas
+	d]]
+=end
 	previous_number = 0
 	files = Dir.glob(ARGV[0] + '*.rb').select { |f| File.file? f }
 	files.each do |filename|

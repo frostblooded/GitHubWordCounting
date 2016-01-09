@@ -5,11 +5,18 @@ def uri?(string)
   start == 'http:' || start == 'https:'
 end
 
+=begin
+
+Get result
+
+=end
+
 def get_result(input)
   if File.file? input
     WordCounter.parse_file input
-  elsif uri? input
+  elsif uri? input #if the input is an uri
     WordCounter.parse_webpage input
+    #otherwise
   else
     WordCounter.parse input
   end
