@@ -16,7 +16,7 @@ def get_result(input)
     WordCounter.parse_file input
   elsif uri? input #if the input is an uri
     WordCounter.parse_webpage input
-    #otherwise
+    #otherwise "#{today}"
   else
     WordCounter.parse input
   end
