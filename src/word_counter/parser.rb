@@ -24,7 +24,7 @@ module WordCounter
     def split_words(string)
       # the regex on the next line removes commented text, strings, regex
       # and any other symbol that isn't a word
-      removal_regex = /(#(?![^"]*"$).*$)|[^[[:word:]]0-9_\s]/
+      removal_regex = /(=begin([^n]|.)*?=end)|(#(?![^"]*"$).*$)|[^[[:word:]]0-9_\s]/
       string.downcase.gsub(removal_regex, ' ').split(' ').reject(&:empty?)
     end
 
