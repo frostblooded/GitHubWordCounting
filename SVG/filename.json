@@ -1,0 +1,21 @@
+{
+  "marks": 3,
+  "words": [
+    [
+      "some", 
+      5
+    ],
+    [
+      "sentence",
+      10
+    ],
+    [
+      "Hello", 
+      15
+    ],
+    [
+      "ala-bala", 
+      8
+    ]
+  ]
+}
