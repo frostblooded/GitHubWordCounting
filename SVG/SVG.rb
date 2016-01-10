@@ -1,7 +1,7 @@
-require 'json' # библиотека 
+require 'json'
 
-file = File.read(ARGV[0]) # отваря файла за четене
-@word_counts = JSON.parse(file) # парсва хеша от файла
+file = File.read(ARGV[0]) 
+@word_counts = JSON.parse(file) 
 
 
 def rect  x, y, width, height
@@ -35,42 +35,3 @@ File.open("result.svg", "w") do |f|
 	end
 	f.write('</svg>')
 end
-
-
-=begin
-
-трябва да парснеш json файла,
-да си напишеш функциите за правоъгълници и
-текст и после просто като минаваш през всеки 
-елемент от хеша му казваш да прави функцията за
-правоъгълниците като първият аргумент 
-ти е ключът(думата), а вторият е броят на думата
-
-компилиране: ruby + името на файла.rb + името на json файла
-
-=end
-
-
-
-=begin
-@word_counts.each do |word, amount| # amount = броят на думата
-		if amount.is_a? Numeric
-			x = 10
-			y = amount * 10 + 100
-			f.write(graph(amount, x, y));
-			f.write(text(x, y, word));
-			x += 60
-				
-			f.write(graph(amount, x, y))
-			f.write(text(x, y, word))
-		else 
-			amount.each do |word2, amount2|
-				x = 10
-				y = amount2 * 10 + 100
-				f.write(graph(amount2, x, y));
-				f.write(text(x, y, word2));
-				x += 60
-				
-				f.write(graph(amount2, x, y))
-				f.write(text(x, y, word2))
-=end
