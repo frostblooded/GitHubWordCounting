@@ -1,5 +1,4 @@
 require 'json'
-require_relative '../svg_writer.rb'
 
 module WordCounter
   # Represents the result of counting words
@@ -29,10 +28,6 @@ module WordCounter
     def to_json
       json_output = { marks: marks_count, words: word_counts }
       JSON.pretty_generate(json_output)
-    end
-
-    def to_svg
-      SVGWriter.bar_chart word_counts
     end
   end
 end
