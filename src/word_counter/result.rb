@@ -26,7 +26,8 @@ module WordCounter
     end
 
     def to_json
-      json_output = { marks: marks_count, words: word_counts }
+      json_output = word_counts.clone
+      json_output['"marks"'] = @marks_count if @marks_count > 0
       JSON.pretty_generate(json_output)
     end
   end
