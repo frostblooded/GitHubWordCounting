@@ -3,6 +3,10 @@ require 'word_counter/result'
 module WordCounter
   # counts words in text
   class Parser
+    def initialize
+      @extension = ""
+    end
+
     def count_marks(string)
       string.downcase.scan(/[^[[:word:]]0-9_\s]/).count
     end
@@ -24,13 +28,18 @@ module WordCounter
     def split_words(string)
       # the regex on the next line removes commented text, strings, regex
       # and any other symbol that isn't a word
-      removal_regex = /(=begin([^n]|.)*?=end)|(#(?![^"]*"$).*$)|[^[[:word:]]0-9_\s]/
+      if(@extension == :cpp || @extension == :cc || @extension == :java)
+        removal_regex = /(\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\/)|(\/\/.*)/
+      else
+        removal_regex = /(=begin([^n]|.)*?=end)|(#(?![^"]*"$).*$)|[^[[:word:]]0-9_\s]/
+      end
+      
       string.downcase.gsub(removal_regex, ' ').split(' ').reject(&:empty?)
     end
 
-    def parse(string)
+    def parse(string, extension)
+      @extension = extension
       result = Result.new
-      # the regex on the next line select all marks
       result.marks_count = count_marks string
       words = split_words string
       result.word_counts = count_words words
