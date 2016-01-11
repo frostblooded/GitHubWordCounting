@@ -22,8 +22,6 @@ module WordCounter
         result.marks_count += temp.marks_count
       end
 
-      print "\rProcessing file #{current_file} of #{files.size} (#{((current_file.to_f / files.size) * 100).round(2)}%)"
-
       result.word_counts = result.word_counts.sort_by { |word, count| [-count, word] }.to_h
       result
     end
