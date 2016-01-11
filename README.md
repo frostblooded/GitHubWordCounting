@@ -9,7 +9,7 @@ If you want to download all repositories, just tun download_repos.sh as follows:
 
 ```bash download_repos.sh```
 
-***Krissy the magnificent***
+**\*Krissy the magnificent***
 
 What everyone has done:
 
