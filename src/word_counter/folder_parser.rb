@@ -16,13 +16,13 @@ module WordCounter
       current_file = 0
       files.each do |file|
         current_file += 1
-        puts "file #{current_file} of #{files.size} (#{((current_file.to_f / files.size) * 100).round(2)}%) for #{extension}" if current_file % 50 == 0
+        puts "file #{current_file} of #{files.size} (#{((current_file.to_f / files.size) * 100).round(2)}%) for #{extension}" if current_file % 100 == 0
         temp = super file, extension
         result.word_counts.merge!(temp.word_counts.to_h) { |_, oldval, newval| newval + oldval }
         result.marks_count += temp.marks_count
       end
 
-      puts "file #{current_file} of #{files.size} (#{((current_file.to_f / files.size) * 100).round(2)}%) for #{extension}" if current_file % 50 != 0
+      puts "file #{current_file} of #{files.size} (#{((current_file.to_f / files.size) * 100).round(2)}%) for #{extension}" if current_file % 100 != 0
 
       result.word_counts = result.word_counts.sort_by { |word, count| [-count, word] }.to_h
       result

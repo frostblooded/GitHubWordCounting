@@ -14,20 +14,22 @@ class SVGWriter
 
       temp = word_counts.first.last
       y = temp
-      temp = temp / 200 + 1 
-      x = 40
+      temp = temp / 500 + 1   
+      x = 30
       word_counts.each do |word, amount|
         if amount.is_a? Numeric
-          temp_y = (300 - y) - y
-          f.write(rect(x,temp_y, 30, temp * amount * 10))
-          f.write('<text x = "'+(x - 10).to_s+'" y = "'+(temp_y).to_s+'" textLength = "'+(word.length * 15).to_s+'" fill="black" style="writing-mode: tb;">'+word+'</text>')
-          x += 60
+          temp_y = y
+          bar_height = temp * amount * 10
+          f.write(rect(x,temp_y, 10, bar_height))
+          f.write('<text x = "'+(x + 5).to_s+'" y = "'+(temp_y + bar_height + 10).to_s+'" fill="black" style="writing-mode: tb;">'+word+'</text>')
+          x += 20
          else 
           amount.each do |word2, amount2|
-            temp_y = (300- y) - y
-            f.write(rect(x, temp_y, 30, temp * amount2 * 10))
-            f.write('<text x = "'+(x + 10).to_s+'" y = "'+(temp_y - 70).to_s+'" textLength = "'+(word.length * 15).to_s+'" fill="black" style="writing-mode: tb;">'+word2+'</text>')
-            x += 60
+            temp_y = y
+            bar_height = temp * amount2 * 10
+            f.write(rect(x, temp_y, 10, bar_height))
+            f.write('<text x = "'+(x + 5).to_s+'" y = "'+(temp_y - 70 + bar_height + 10).to_s+'" fill="black" style="writing-mode: tb;">'+word2+'</text>')
+            x += 20
           end 
         end
       end

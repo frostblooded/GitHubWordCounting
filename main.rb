@@ -1,7 +1,5 @@
-
-
 require 'word_counter'
-require_relative 'src/SVG/SVG.rb'
+require_relative 'svg_writer.rb'
 
 def write_to_file(file, data)
   File.open(file, 'w') do |f|
@@ -12,7 +10,7 @@ end
 def handle_repo_parsing(folder, file_extension, json_res_file, svg_res_file)
   result = WordCounter.parse_folder folder, file_extension
   write_to_file json_res_file, result.to_json
-  SVGWriter.make_svg result, svg_res_file
+  write_to_file svg_res_file, SVGWriter.bar_chart(result) if result.word_counts.size > 0
 end
 
 folder = ARGV[0]
