@@ -3,7 +3,7 @@ A script that counts the words from 1M Java code, 1M Ruby code, 1M C++ code, mer
 
 You can run the script with the test data as follows:
 
-```ruby -I src/ main.rb -d test_data/ json```
+```ruby -I src/ main.rb test_data/```
 
 If you want to download all repositories, just tun download_repos.sh as follows:
 
