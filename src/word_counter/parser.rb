@@ -29,12 +29,17 @@ module WordCounter
       # the regex on the next line removes commented text, strings, regex
       # and any other symbol that isn't a word
       if @extension == :cpp || @extension == :cc || @extension == :java
-        removal_regex = /(((['"])(?:(?!\2|\\).|\\.)*\2)|\/\/[^\n]*|\/\*(?:[^*]|\*(?!\/))*\*\/)|[^[[:word:]]\s]|[[:digit:]]/
+        removal_regex = /(((['"])(?:(?!\2|\\).|\\.)*\2)|\/\/[^\n]*|\/\*(?:[^*]|\*(?!\/))*\*\/)|[^[[:word:]]\s]/
       else
-        removal_regex = /(=begin([^n]|.)*?=end)|(#(?![^"]*"$).*$)|[^[[:word:]]\s]|[[:digit:]]/
+        removal_regex = /(=begin([^n]|.)*?=end)|(#(?![^"]*"$).*$)|[^[[:word:]]\s]/
       end
 
-      string.downcase.gsub(removal_regex, ' ').split(' ').reject(&:empty?)
+      words = string.downcase.gsub(removal_regex, ' ').split(' ').reject(&:empty?)
+
+      #remove numbers, but only those that are ONLY numbers: 0x23 wont match
+      words.each do |word|
+        words.delete word if word =~ /^[0-9]*$/
+      end
     end
 
     def parse(string, extension)
