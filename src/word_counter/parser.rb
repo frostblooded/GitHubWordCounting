@@ -33,7 +33,7 @@ module WordCounter
       else
         removal_regex = /(=begin([^n]|.)*?=end)|(#(?![^"]*"$).*$)|[^[[:word:]]0-9_\s]/
       end
-      
+
       string.downcase.gsub(removal_regex, ' ').split(' ').reject(&:empty?)
     end
 
