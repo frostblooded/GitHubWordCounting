@@ -50,7 +50,6 @@ class SVGWriter
       f << '<svg xmlns="http://www.w3.org/2000/svg">'
 
       hash.each_with_index do |(word, count), index|
-        puts "Making SVG: #{index} of #{hash.size} (#{((index.to_f / hash.size) * 100).round(2)}%)" if index % 100 == 0
         f << get_word_rect(single_count_height, word, count, index)
       end
 
