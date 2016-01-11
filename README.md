@@ -9,9 +9,14 @@ If you want to download all repositories, just tun download_repos.sh as follows:
 
 ```bash download_repos.sh```
 
+**Our team - Krissy the magnificent**
 
-**TO DO:**
+What everyone has done:
 
-3. Ясен да провери дали рубито бачка, защото в момента май трябва да си работи. За трети път ще кажа, за всеки случай, че е ясно, че бъгва като в коментар на един ред има ", ама това е най-доброто, което измислих.
+Kriji98: Worked on the SVG and was the mascot(obviously)
+IgnatGeorgiev: Helped with testing, solved big problem with the regex...
+Streetfighter4: Main QA, but also acquired the repositories and counted the words in them
+HristiyanZahariev: Made most of the regexes and worked on them overall
+frostblooded: Helped the others and did some work on everything
 
-4. Ако някой може да измисли по-добър regex за коментарите на един ред в руби, да го направи.
+Of course everyone helped each other and worked on a bit of everything
