@@ -41,18 +41,20 @@ class SVGWriter
       '</text>'
   end
 
-  def self.bar_chart(data)
-    hash = data.word_counts
+  def self.bar_chart(file, data)
+    File.open(file, 'w') do |f|
+      hash = data.word_counts
 
-    # hash.values.max is the word with the biggest count
-    single_count_height = (@bar_max_height.to_f - 1) / hash.values.max.to_f
-    res = '<svg xmlns="http://www.w3.org/2000/svg">'
+      # hash.values.max is the word with the biggest count
+      single_count_height = (@bar_max_height.to_f - 1) / hash.values.max.to_f
+      f << '<svg xmlns="http://www.w3.org/2000/svg">'
 
-    hash.each_with_index do |(word, count), index|
-      puts "Making SVG: #{index} of #{hash.size} (#{((index.to_f / hash.size) * 100).round(2)}%)" if index % 100 == 0
-      res += get_word_rect single_count_height, word, count, index
+      hash.each_with_index do |(word, count), index|
+        puts "Making SVG: #{index} of #{hash.size} (#{((index.to_f / hash.size) * 100).round(2)}%)" if index % 100 == 0
+        f << get_word_rect(single_count_height, word, count, index)
+      end
+
+      f << '</svg>'
     end
-
-    res += '</svg>'
   end
 end
