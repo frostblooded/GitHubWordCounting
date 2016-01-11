@@ -2,7 +2,7 @@
 class SVGWriter
   @bar_max_height = 500
   @bar_width = 20
-  @bar_color = 'red'
+  @bar_color = 'rgb(185,129,183)'
   @bars_starting_x = 10
   @bars_starting_y = 50
   @bars_bottom_y = @bars_starting_y + @bar_max_height
