@@ -11,11 +11,8 @@ end
 
 def handle_repo_parsing(folder, file_extension, json_res_file, svg_res_file)
   result = WordCounter.parse_folder folder, file_extension
-
-  if result.word_counts.size > 0
-    write_to_file json_res_file, result.to_json
-    SVGWriter.make_svg result, svg_res_file
-  end
+  write_to_file json_res_file, result.to_json
+  SVGWriter.make_svg result, svg_res_file
 end
 
 folder = ARGV[0]

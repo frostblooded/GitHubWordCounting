@@ -7,6 +7,7 @@ class SVGWriter
 
   def self.make_svg(data, file)
     word_counts = data.word_counts
+    return if word_counts.size == 0
 
     File.open(file, "w") do |f|
       f.write('<svg xmlns="http://www.w3.org/2000/svg">')
