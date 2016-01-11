@@ -29,9 +29,9 @@ module WordCounter
       # the regex on the next line removes commented text, strings, regex
       # and any other symbol that isn't a word
       if @extension == :cpp || @extension == :cc || @extension == :java
-        removal_regex = /(((['"])(?:(?!\2|\\).|\\.)*\2)|\/\/[^\n]*|\/\*(?:[^*]|\*(?!\/))*\*\/)|[^[[:word:]]0-9_\s]/
+        removal_regex = /(((['"])(?:(?!\2|\\).|\\.)*\2)|\/\/[^\n]*|\/\*(?:[^*]|\*(?!\/))*\*\/)|[^[[:word:]]\s]|[[:digit:]]/
       else
-        removal_regex = /(=begin([^n]|.)*?=end)|(#(?![^"]*"$).*$)|[^[[:word:]]0-9_\s]/
+        removal_regex = /(=begin([^n]|.)*?=end)|(#(?![^"]*"$).*$)|[^[[:word:]]\s]|[[:digit:]]/
       end
 
       string.downcase.gsub(removal_regex, ' ').split(' ').reject(&:empty?)
