@@ -1,10 +1,9 @@
 require 'word_counter/result'
-#(?![^"]*").*$
 module WordCounter
   # counts words in text
   class Parser
     def initialize
-      @extension = ""
+      @extension = ''
     end
 
     def count_marks(string)
@@ -36,7 +35,7 @@ module WordCounter
 
       words = string.downcase.gsub(removal_regex, ' ').split(' ').reject(&:empty?)
 
-      #remove numbers, but only those that are ONLY numbers: 0x23 wont match
+      # remove numbers, but only those that are ONLY numbers: 0x23 wont match
       words.each do |word|
         words.delete word if word =~ /^[0-9]*$/
       end

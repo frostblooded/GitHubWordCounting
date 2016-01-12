@@ -14,11 +14,8 @@ def handle_repo_parsing(folder, file_extension, json_res_file, svg_res_file)
 end
 
 folder = ARGV[0]
+Dir.mkdir 'results' unless File.directory? 'results'
 
-if !File.directory? 'results'
-  Dir.mkdir 'results'
-end
-
-handle_repo_parsing folder, :rb, "results/ruby.json", "results/ruby.svg"
-handle_repo_parsing folder, :cpp, "results/cpp.json", "results/cpp.svg"
-handle_repo_parsing folder, :java, "results/java.json", "results/java.svg"
+handle_repo_parsing folder, :rb, 'results/ruby.json', 'results/ruby.svg'
+handle_repo_parsing folder, :cpp, 'results/cpp.json', 'results/cpp.svg'
+handle_repo_parsing folder, :java, 'results/java.json', 'results/java.svg'
