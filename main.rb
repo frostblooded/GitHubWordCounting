@@ -1,5 +1,5 @@
 require 'word_counter'
-require_relative 'svg_writer.rb'
+require_relative 'src/svg_writer.rb'
 
 def write_to_file(file, data)
   File.open(file, 'w') do |f|
