@@ -7,7 +7,7 @@ You can run the script with the test data as follows:
 
 If you want to download all repositories, just tun download_repos.sh as follows:
 
-```bash download_repos.sh```
+```bash repos/download_repos.sh```
 
 **\*Krissy the magnificent***
 
